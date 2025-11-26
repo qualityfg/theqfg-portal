@@ -37,6 +37,8 @@ jobs:
           # If your build creates a different output directory (e.g. 'dist' or 'build'),
           # set output_location to that folder instead.
           output_location: "."
+          # Skip Oryx (auto-build) so the action uploads the existing files directly
+          skip_app_build: true
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
