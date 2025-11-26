@@ -28,9 +28,15 @@ jobs:
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: "/" # App source code path
+          # We're explicitly using the repository root as the app source
+          # (Azure action expects a relative path, use '.' instead of '/').
+          app_location: "."
           api_location: "" # Api source code path - optional
-          output_location: "my-website" # Built app content directory - optional
+          # The built site files are currently at the repo root (index.html, assets/).
+          # Use '.' as the output_location so Azure will upload files from the repo root.
+          # If your build creates a different output directory (e.g. 'dist' or 'build'),
+          # set output_location to that folder instead.
+          output_location: "."
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
